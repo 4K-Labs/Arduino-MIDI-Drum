@@ -46,7 +46,7 @@ void loop()
         } else {                                                  // Else just send the max velocty value
           hitavg = 100;
         }
-        MIDI_TX(154,PadNote[pin],hitavg);                         // Sending MIDI message + setting PinPlayTime to 0 (Will increment with each read) and make activePad = true
+        MIDI_TX(144,PadNote[pin],hitavg);                         // Sending MIDI message + setting PinPlayTime to 0 (Will increment with each read) and make activePad = true
         PinPlayTime[pin] = 0;
         activePad[pin] = true;
       } else {                                                    // Else if pin is currently active (still within its PinPlayTime) increment it with 1 (splitsecond)
@@ -56,7 +56,7 @@ void loop()
       PinPlayTime[pin] = PinPlayTime[pin] + 1;
       if(PinPlayTime[pin] > MaxPlayTime[pin]) {
         activePad[pin] = false;
-        MIDI_TX(154,PadNote[pin],0); 
+        MIDI_TX(144,PadNote[pin],0); 
       }
     }
   } 
